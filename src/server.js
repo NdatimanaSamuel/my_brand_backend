@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
     res.status(200).send(`
-    <h1 style="text-align: center; color: blue; margin-top: 20vh">Welcome to our api home page</h1>
+    <h1 style="text-align: center; color: red; margin-top: 20vh">Welcome to our api home page</h1>
     `);
   });
 
