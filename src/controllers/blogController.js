@@ -5,7 +5,6 @@ import cloudinary from "cloudinary";
 import dotenv from "dotenv";
 
   dotenv.config();
-  
 
   cloudinary.config({ 
     cloud_name: process.env.CLOUD_NAME, 
@@ -82,7 +81,7 @@ class blogController {
         image: result.url,
       });
       await newBlog.save();
-      res.status(201).send('successfully created a new blog');
+      res.status(201).send('successfully added a new blog');
     } catch (error) {
       console.log(error);
       res.status(500).send('Error creating blog');

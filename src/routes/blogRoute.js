@@ -13,6 +13,7 @@ router.get("/", blogController.getBlogs);
 router.get("/:id", blogController.getBlog);
 router.put("/:id", blogController.updateBlog);
 router.delete("/:id",blogController.deleteBlog);
+// router.delete("/:id",restrictDelete,blogController.deleteBlog);
 
 
 export default router
