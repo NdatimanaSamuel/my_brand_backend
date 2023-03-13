@@ -5,6 +5,8 @@ import sendMessageRoute from "./sendMessageRoute.js"
 import loginRoute from "./loginRoute.js"
 import swaggerui from "swagger-ui-express"
 import documentation from "../docs/swaggerOptions.js"
+import showMessageRoute from "./showMessageRoute.js"
+
 
 const router = express.Router()
 
@@ -14,6 +16,7 @@ const router = express.Router()
 router.use("/blogs", blogRoute);
 router.use("/signup",signupRoute);
 router.use("/sendMessage",sendMessageRoute);
+router.use("/showMessages",showMessageRoute);
 router.use("/login",loginRoute);
 
 router.use("/documentation", swaggerui.serve, swaggerui.setup(documentation),)

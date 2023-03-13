@@ -19,6 +19,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
+app.use(express.json({limit: '25mb'}));
+app.use(express.urlencoded({limit: '25mb', extended: true}));
+
 app.get("/", (req, res) => {
     res.status(200).send(`
     <h1 style="text-align: center; color: blue; margin-top: 20vh">Welcome to our api home page</h1>

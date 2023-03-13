@@ -7,8 +7,8 @@ const upload=multer({dest: 'uploads/'});
 
 const router = express.Router();
 
-
-router.post("/",upload.single('image'),blogController.createBlog);
+// router.post("/",upload.single('image'),blogController.createBlog);
+router.post("/",blogController.createBlog);
 router.get("/", blogController.getBlogs);
 router.get("/:id", blogController.getBlog);
 router.put("/:id", blogController.updateBlog);

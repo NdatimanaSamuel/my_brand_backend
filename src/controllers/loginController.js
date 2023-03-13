@@ -23,6 +23,10 @@ const loginController=async (req,res)=>{
         return res.status(400).json({ message: 'Invalid Login credentials' });
       }
 
+      if(user.role==="user"){
+        return res.status(400).json({ message: 'you are not authorized' });
+      }
+
       else{
             const token=jwt.sign({userId:user._id},process.env.SECRETE_KEY);
             console.log(token);

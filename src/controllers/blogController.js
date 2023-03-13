@@ -72,19 +72,26 @@ class blogController {
 
   static async createBlog(req, res) {
     try {
-      const { title, author, content } = req.body;
-      const result = await cloudinary.uploader.upload(req.file.path);
+      const { title, author, content,image } = req.body;
+      const result = await cloudinary.uploader.upload(image);
+      // const result=await cloudinary.uploader.upload(req.file.path);
       const newBlog = await Blog.create({
         title,
         author,
         content,
-        image: result.url,
+        // image
+        image: result.url
       });
       await newBlog.save();
-      res.status(201).send('successfully added a new blog');
+      res.status(201).json({
+        message: "New blog created successfully",
+        data: newBlog
+      });
+
     } catch (error) {
-      console.log(error);
-      res.status(500).send('Error creating blog');
+       const messageContent = error.message;
+       const status = 500;
+      errorFunc(res, messageContent, status);
     }
   }
 
