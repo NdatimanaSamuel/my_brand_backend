@@ -73,7 +73,7 @@ class blogController {
   static async createBlog(req, res) {
     try {
       const { title, author, content,image } = req.body;
-      const result = await cloudinary.uploader.upload(image);
+      let result = await cloudinary.uploader.upload(image);
       // const result=await cloudinary.uploader.upload(req.file.path);
       const newBlog = await Blog.create({
         title,
@@ -101,11 +101,12 @@ class blogController {
       const { id } = req.params; // using ES6
 
       // body to be update
-      const { title, content } = req.body;
+      const { title, content,image } = req.body;
+      let result = await cloudinary.uploader.upload(image);
 
       // id
       const _id = id;
-      const blogUpdated = await Blog.findByIdAndUpdate(_id, { title, content }, { new: true });
+      const blogUpdated = await Blog.findByIdAndUpdate(_id, { title, content,image }, { new: true });
 
       if (!blogUpdated) {
         return res.status(404).json({
